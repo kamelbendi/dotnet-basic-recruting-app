@@ -1,7 +1,10 @@
 09.26.2022 : Approach to solve the problem,
 first I followed the following two tutorials to get the basics of C# and .NET web API:
+
 • C# tutorial : C# Full Course - Learn C# 10 and .NET 6 in 7 hours : https://www.youtube.com/watch?v=q_F4PyW8GTg
+
 • .NET 6 web API tutorial : https://www.youtube.com/watch?v=Fbf_ua2t6v4
+
 
 # Prerequisites
 
