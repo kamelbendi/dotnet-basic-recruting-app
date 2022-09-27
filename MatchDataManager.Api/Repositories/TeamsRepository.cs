@@ -8,6 +8,10 @@ public static class TeamsRepository
 
     public static void AddTeam(Team team)
     {
+        if (_teams.FirstOrDefault(x => x.Name == team.Name) is not null)
+        {
+            throw new Exception("there cannot be more then one team with the same name");
+        }
         team.Id = Guid.NewGuid();
         _teams.Add(team);
     }
@@ -28,6 +32,7 @@ public static class TeamsRepository
 
     public static Team GetTeamById(Guid id)
     {
+        
         return _teams.FirstOrDefault(x => x.Id == id);
     }
 
