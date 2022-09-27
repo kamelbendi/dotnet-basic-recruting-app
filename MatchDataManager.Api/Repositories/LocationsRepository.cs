@@ -8,6 +8,11 @@ public static class LocationsRepository
 
     public static void AddLocation(Location location)
     {
+        
+        if (_locations.FirstOrDefault(x => x.Name == location.Name) is not null)
+        {
+            throw new Exception("Location already exists");
+        }
         location.Id = Guid.NewGuid();
         _locations.Add(location);
     }
