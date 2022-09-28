@@ -7,13 +7,16 @@ first I followed the following two tutorials to get the basics of C# and .NET we
 
 • .NET 6 web API tutorial : https://www.youtube.com/watch?v=Fbf_ua2t6v4
 
-
+• setting up my machine : https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio-code
 _____________
 
 09.27.2022 :
 adding validation, used link : 
 https://learn.microsoft.com/pl-pl/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=net-6.0
 
+_____________
+09.28.2022 :
+adding a database 
 
 
 # Prerequisites
