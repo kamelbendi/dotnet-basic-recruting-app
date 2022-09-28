@@ -8,6 +8,14 @@ first I followed the following two tutorials to get the basics of C# and .NET we
 • .NET 6 web API tutorial : https://www.youtube.com/watch?v=Fbf_ua2t6v4
 
 
+_____________
+
+09.27.2022 :
+adding validation, used link : 
+https://learn.microsoft.com/pl-pl/dotnet/api/system.componentmodel.dataannotations.stringlengthattribute?view=net-6.0
+
+
+
 # Prerequisites
 
 This repository contains a code which you are supposed to work with. Please create a fork of this repo. As a result of your task please send us back a link to your github repository. While working with the code, please commit all changes to your repository, for us to check your progress.
