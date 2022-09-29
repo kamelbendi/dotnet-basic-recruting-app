@@ -16,7 +16,17 @@ https://learn.microsoft.com/pl-pl/dotnet/api/system.componentmodel.dataannotatio
 
 _____________
 09.28.2022 :
-adding a database 
+adding a database, used links :
+
+https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio
+https://www.youtube.com/watch?v=-yUsrUAUfHs
+understand command tools to execute first code approach (old version of code, follow the first link for updated steps): https://www.youtube.com/watch?v=z-Hll4Xddjs
+
+Linking Database with the API : 
+
+full tutorial : https://www.youtube.com/watch?v=-yUsrUAUfHs
+error handeling and testing working database : https://learn.microsoft.com/en-us/ef/core/cli/dotnet
+
 
 
 # Prerequisites
