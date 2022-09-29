@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 
 using MatchDataManager.Api.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,14 +9,20 @@ namespace MatchDataManager.Api.MatchData;
 public class MatchDataDbContext:DbContext
 {
     
+    public DbSet<Location> Location { get; set; }
+    public DbSet<Team> Team { get; set; }
     
     
+    
+    public MatchDataDbContext()
+    {
+        
+    }
     public MatchDataDbContext(DbContextOptions options) : base(options)
     {
     }
     
-    public DbSet<Location> Location { get; set; }
-    public DbSet<Team> Team { get; set; }
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -32,18 +40,11 @@ public class MatchDataDbContext:DbContext
                 entity.Property(e => e.Name).HasMaxLength(255);
             }
         );
-        
-        
-    }/*
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
-    {
-        optionsbuilder.UseSqlite(@"Data source=MatchData\\app.db");
     }
-    public DbSet<Location> Location { get; set; }
-    public DbSet<Team> Team { get; set; }*/
     
-    /*"ConnectionStrings": {
-    "DefaultConnection" : "Data source=MatchData\\app.db"
-  }*/
-    
+
+    // The following configures EF to create a Sqlite database file in the
+    // special "local" folder for your platform.
+    //protected override void OnConfiguring(DbContextOptionsBuilder options)
+    //    => options.UseSqlite($"Data Source={DbPath}");
 }

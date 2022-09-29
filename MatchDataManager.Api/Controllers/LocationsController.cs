@@ -1,6 +1,8 @@
+using MatchDataManager.Api.MatchData;
 using MatchDataManager.Api.Models;
 using MatchDataManager.Api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MatchDataManager.Api.Controllers;
 
@@ -8,42 +10,77 @@ namespace MatchDataManager.Api.Controllers;
 [Route("[controller]")]
 public class LocationsController : ControllerBase
 {
+    private readonly MatchDataDbContext _context;
+
+    public LocationsController(MatchDataDbContext context)
+    {
+        _context = context;
+    }
     [HttpPost]
-    public IActionResult AddLocation(Location location)
+    public async Task<ActionResult<Location>> AddLocation(Location location)
     {
         LocationsRepository.AddLocation(location);
+        _context.Location.Add(location);
+        await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetById), new {id = location.Id}, location);
     }
 
     [HttpDelete]
-    public IActionResult DeleteLocation(Guid locationId)
+    public async Task<IActionResult> DeleteLocation(Guid locationId)
     {
+        var deletedLocation = await _context.Location.FindAsync(locationId);
+        
+        if (deletedLocation == null)
+        {
+            return NotFound();
+        }
+        
         LocationsRepository.DeleteLocation(locationId);
+        _context.Location.Remove(deletedLocation);
         return NoContent();
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<ActionResult<IEnumerable<Location>>> Get()
     {
-        return Ok(LocationsRepository.GetAllLocations());
+        //await _context.Location.ToListAsync();
+        return Ok(await _context.Location.ToListAsync());
     }
 
     [HttpGet("{id:guid}")]
-    public IActionResult GetById(Guid id)
+    public async Task<ActionResult<Location>> GetById(Guid id)
     {
-        var location = LocationsRepository.GetLocationById(id);
-        if (location is null)
+        //var location = LocationsRepository.GetLocationById(id);
+        var locationInDataBase = await _context.Location.FindAsync(id);
+        if (locationInDataBase is null)
         {
             return NotFound();
         }
 
-        return Ok(location);
+        return Ok(locationInDataBase);
     }
 
     [HttpPut]
-    public IActionResult UpdateLocation(Location location)
+    public async Task<IActionResult> UpdateLocation(Location location)
     {
         LocationsRepository.UpdateLocation(location);
-        return Ok(location);
+        _context.Entry(location).State = EntityState.Modified;
+
+        try
+        {
+            await _context.SaveChangesAsync();
+        }
+        catch(DbUpdateConcurrencyException)
+        {
+            if (LocationsRepository.GetLocationById(location.Id) != null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+        return NoContent();
     }
 }

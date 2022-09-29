@@ -1,5 +1,4 @@
 ﻿using MatchDataManager.Api.Models;
-
 namespace MatchDataManager.Api.Repositories;
 
 public static class LocationsRepository
@@ -47,4 +46,12 @@ public static class LocationsRepository
         existingLocation.City = location.City;
         existingLocation.Name = location.Name;
     }
+
+    /*public static void CheckLocationIfExists(Location location)
+    {
+        if (_locations.Find(x => x.Id == location.Id))
+        {
+            
+        }
+    }*/
 }
