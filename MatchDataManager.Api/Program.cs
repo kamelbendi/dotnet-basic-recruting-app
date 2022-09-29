@@ -1,3 +1,6 @@
+using MatchDataManager.Api.MatchData;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddDbContext<MatchDataDbContext>(options =>
+    options.UseSqlite("DefaultConnection"));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=MatchData\\App.db";
+builder.Services.AddSqlite<MatchDataDbContext>(connectionString);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,3 +29,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
