@@ -20,13 +20,27 @@ adding a database, used links :
 
 https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-6.0&tabs=visual-studio
 https://www.youtube.com/watch?v=-yUsrUAUfHs
+
 understand command tools to execute first code approach (old version of code, follow the first link for updated steps): https://www.youtube.com/watch?v=z-Hll4Xddjs
 
 Linking Database with the API : 
 
 full tutorial : https://www.youtube.com/watch?v=-yUsrUAUfHs
+
 error handeling and testing working database : https://learn.microsoft.com/en-us/ef/core/cli/dotnet
 
+_____________
+10.06.2022 :
+For Part two : 
+
+in Order to make the code more sustainable, I would have made another folder in the main repository for *Services* where all the connections for the database will be specified there... it will contain all of the commands of the database, and have more of a SOLID architechture, since there is two responsibilities in the Controllers now. helpful link : https://enlabsoftware.com/development/how-to-apply-solid-principles-with-practical-examples-in-c-sharp.html
+
+
+got the basics of unit testing from :
+
+https://www.youtube.com/watch?v=uj0RWP3DdUo
+
+https://www.youtube.com/watch?v=HYrXogLj7vg
 
 
 # Prerequisites
